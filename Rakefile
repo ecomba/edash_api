@@ -5,13 +5,12 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "edash_api"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
-    gem.email = "ecomba@nexwerk.com"
+    gem.summary = %Q{Offer an API to the Edash board in pure Ruby}
+    gem.description = %Q{Edash API is a set of API's to display messages on the Edash board.}
+    gem.email = "enrique@edendevelopment.co.uk"
     gem.homepage = "http://github.com/ecomba/edash_api"
     gem.authors = ["Enrique Comba Riepenhausen"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

@@ -1,6 +1,6 @@
 = edash_api
 
-Description goes here.
+Ruby bindings (to avoid doing the http post requests yourself) to the Edash Dashboard. 
 
 == Note on Patches/Pull Requests
  
