@@ -1,5 +1,6 @@
 require 'net/http'
 require 'uri'
+require 'edash/progress'
 
 module Edash
   module Api
@@ -47,7 +48,13 @@ module Edash
     end
 
     def parameters_for_project_progress(project, progress)
-      { :project => project, :progress => progress }
+      { :project => project, :progress => create_progress_report(progress) }
+    end
+
+    def create_progress_report(progress)
+      progress_report = "[#{progress.to_json}]" unless progress.is_a? Array
+      progress_report = "[#{progress.map{|progress| progress.to_json}.join(',')}]" if progress.is_a? Array
+      progress_report
     end
   end
 end

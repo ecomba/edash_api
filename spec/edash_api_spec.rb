@@ -42,9 +42,15 @@ describe Edash::Api do
   end
 
   context 'display project progress' do
-    it 'sends a request' do
-      receives_post_form_with(build_uri('progress'), { :project => project, :progress => true })
-      display_project_progress(project, true)
+    it 'sends a request with one progress report' do
+      receives_post_form_with(build_uri('progress'), { :project => project, :progress => "[#{progress.to_json}]" })
+      display_project_progress(project, progress)
+    end
+
+    it 'sends a request with more than one progress report' do
+      receives_post_form_with(build_uri('progress'), :project => project,
+                              :progress => "[#{progress.to_json},#{progress.to_json}]")
+      display_project_progress(project, [progress, progress])
     end
   end
 
@@ -89,6 +95,10 @@ describe Edash::Api do
 
   def project 
     'Testproject'
+  end
+
+  def progress
+    Edash::Api::Progress.new(Edash::Api::Progress::STARTED, 30)
   end
 
   def setup_edash_base
